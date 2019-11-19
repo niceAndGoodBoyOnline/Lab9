@@ -54,15 +54,12 @@ function appendBoxes(boxList){
 function gameBox(idNum, color){
 	this.btn = document.createElement('button');
 	this.btn.id = idNum;
-	this.btn.style.position = 'absolute';
 	this.btn.style.width = '10em';
 	this.btn.style.height = '5em';
 	this.btn.style.fontSize = '1vw';
 	this.btn.style.left = idNum * 10 + 'em';
 	this.btn.style.backgroundColor = color;
-	this.btn.innerHTML = idNum + 1;
 	this.btn.onclick = function() {checkOrder(idNum)}
-	console.log(idNum);
 	
 	return this.btn;
 }
@@ -95,6 +92,7 @@ function randomSpot(thisObject){
 	let w = window.innerWidth;
 	let h = window.innerHeight;	
 	
+	thisObject.style.position = 'absolute';
 	axisX = (Math.random() * 90) + 'vw';
 	axisY = (Math.random() * 90) + 'vh';
 	
