@@ -31,14 +31,12 @@ function manageInput(){
 			let colorLight = 50;
 			
 			for (let i = 0; i < squareOrder; i++){
-				let colorRand =  "hsl( " + generateColor(i, squareOrder) + ',' + colorSat+'%'+ ',' + colorLight+'% )';
-				if (i > 40){
-					colorLight = 50;
-					colorSat = colorSat - 1;
+				let colorRand =  "hsl( " + generateRainbow(i, squareOrder) + ',' + colorSat+'%'+ ',' + colorLight+'% )';
+				if (i % 2 == 0){
+					colorSat = 70
 				}
-				if (i > 20){
-				
-				colorLight = colorLight +1;
+				if (i % 5 == 0){
+					colorLight ==75;
 				}
 				boxList.push(new gameBox(i, colorRand))	
 				
@@ -63,14 +61,11 @@ function appendBoxes(boxList){
 function gameBox(idNum, color){
 	this.btn = document.createElement('button');
 	this.btn.id = idNum;
-	this.btn.style.position = 'absolute';
 	this.btn.style.width = '10em';
 	this.btn.style.height = '5em';
-	this.btn.style.fontSize = '1vw';
 	this.btn.style.top = (Math.random() * 90) + 'vh'
 	this.btn.style.left = (Math.random() * 90) + 'vw';
 	this.btn.style.backgroundColor = color;
-	this.btn.innerHTML = idNum + 1;
 	
 	return this.btn;
 }
@@ -81,6 +76,8 @@ function randomSpot(thisObject){
 	let w = window.innerWidth;
 	let h = window.innerHeight;	
 	
+	thisObject.style.position = 'absolute';
+	
 	axisX = (Math.random() * 90) + 'vw';
 	axisY = (Math.random() * 90) + 'vh';
 	
@@ -89,7 +86,7 @@ function randomSpot(thisObject){
 }
 
 
-function generateColor(colorNum, colors){
+function generateRainbow(colorNum, colors){
 	  if (colors < 1) colors = 1; 
 	  return colorNum * (360 / colors) % 360;
 }
